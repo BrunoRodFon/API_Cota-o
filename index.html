@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Cotação</title>
+</head>
+<body>
+    Valor em dolares: <input type="text" id="dolares"/> <br><br>
+
+    <input type="button" value="Converter" onclick="Converter()"/><br><br>
+
+    Valor em reais (R$)...: <input type="text"/><br><br>
+
+        <script>
+            async function Converter(){
+                var dolares = document.getElementById("dolares").value;
+
+                //https://cep.awesomeapi.com.br/json/01001000
+                var url = `https://economia.awesomeapi.com.br/json/last/USD-BRL`
+
+                var resultado = await fetch(url);
+                var meuJson   = await resultado.json();
+
+                var val_doltoreal = meuJson.high;
+                var realconvert = parseFloat(dolares) * parseFloat(val_doltoreal);
+
+                alert(`Valor convertido ` + realconvert);
+            }
+        </script>
+</body>
+</html>
