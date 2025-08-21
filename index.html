@@ -23,7 +23,7 @@
                 var meuJson   = await resultado.json();
 
                 var val_doltoreal = meuJson.USDBRL.high;
-                var realconvert = dolares * val_doltoreal;
+                var realconvert = parseFloat(meuJson.USDBRL.high) * (document.getElementById("dolares").value);
 
                 alert(realconvert);
             }
