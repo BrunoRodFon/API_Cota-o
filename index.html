@@ -22,10 +22,10 @@
                 var resultado = await fetch(url);
                 var meuJson   = await resultado.json();
 
-                var val_doltoreal = meuJson.high;
+                var val_doltoreal = meuJson.USDBRL.high;
                 var realconvert = parseFloat(dolares) * parseFloat(val_doltoreal);
 
-                alert(`Valor convertido ` + parseFloat(realconvert));
+                alert(val_doltoreal);
             }
         </script>
 </body>
