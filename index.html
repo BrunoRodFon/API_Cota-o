@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Cotação</title>
-</head>
-<body>
-    Valor em dolares: <input type="text" id="dolares"/> <br><br>
+<html>
+    <head>        
+    </head>
+    <body>
+        Valor em dolares (USD$): <input type="text" id="dolar"/><br><br>
 
-    <input type="button" value="Converter" onclick="Converter()"/><br><br>
-
-    Valor em reais (R$)...: <input type="text" id="BRL"/><br><br>
-
+        <input type="button" value="Converter" onClick="converter()"/><br><br>
+        
+        Valor em reais (R$)....: <input type="text" id="real"/><br><br>
         <script>
-            async function Converter(){
-                var dolares = document.getElementById("dolares").value;
+            async function converter(){
+                var dolar = document.getElementById("dolar");
+                var real  = document.getElementById("real");
 
-                //https://cep.awesomeapi.com.br/json/01001000
-                var url = `https://economia.awesomeapi.com.br/json/last/USD-BRL`
+                var url  = `https://economia.awesomeapi.com.br/last/USD-BRL`;
 
-                var resultado = await fetch(url);
-                var meuJson   = await resultado.json();
+                var res  = await fetch(url);
+                var json = await res.json();
 
-                var val_doltoreal = meuJson.USDBRL.ask;
-                var realconvert = parseFloat(val_doltoreal) * dolares;
+                real.value = dolar.value * json["USDBRL"]["bid"];
 
-                //TESTE
-
-                document.getElementById("BRL").value = realconvert.toFixed(2);
             }
+            
         </script>
-</body>
+    </body>
 </html>
