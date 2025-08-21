@@ -10,7 +10,7 @@
 
     <input type="button" value="Converter" onclick="Converter()"/><br><br>
 
-    Valor em reais (R$)...: <input type="text"/><br><br>
+    Valor em reais (R$)...: <input type="text" id="BRL"/><br><br>
 
         <script>
             async function Converter(){
@@ -25,7 +25,8 @@
                 var val_doltoreal = meuJson.USDBRL.high;
                 var realconvert = parseFloat(val_doltoreal) * dolares;
 
-                alert(realconvert);
+                texto_BRL = document.getElementById("BRL").value;
+                texto_BRL.value = realconvert;
             }
         </script>
 </body>
